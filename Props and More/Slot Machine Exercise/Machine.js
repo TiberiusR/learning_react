@@ -4,16 +4,15 @@ class Machine extends React.Component {
         const s1 = slots[Math.floor(Math.random() * slots.length)];
         const s2 = slots[Math.floor(Math.random() * slots.length)];
         const s3 = slots[Math.floor(Math.random() * slots.length)];
-        let msg;
-        if (s1 === s2 && s1 === s3 && s2 === s3) {
-            msg = "You win!"
-        } else {
-            msg = "Try again"
-        }
+        const winner = s1 === s2 && s2 === s3;
         return (
-            <div>
-                <p>{s1} {s2} {s3}</p>
-                {msg}
+            <div className="Machine">
+                <p style={{fontSize:'50px'}}>
+                    {s1} {s2} {s3}
+                </p>
+                <p className={winner ? 'win' : 'lose'}>
+                    {winner ? "You Win!" : "Try Again"}
+                </p>
             </div>
         )
     }
